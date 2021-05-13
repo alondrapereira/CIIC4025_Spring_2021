@@ -72,16 +72,42 @@ def lcs(s1, s2):
     # L[m][n] contains the length of LCS of s1[0..n-1] & s2[0..m-1]
     return L[m][n]
 
-# *************** Sequence Analysis *************** #
+
+# *************** Sequence Alignment *************** #
+def sequence_alignment(s1, s2):
+    # TODO
+    print('this is hell :c')
+
 
 # *************** 0-1 Knapsack *************** #
+# A Dynamic Programming based Python
+# Program for 0-1 Knapsack problem
+# Returns the maximum value that can
+# be put in a knapsack of capacity W
+def knapsack_01(W, wt, val, n):
+    A = [[0 for x in range(W + 1)] for x in range(n + 1)]
+    for i in range(n + 1):
+        for w in range(W + 1):
+            if i == 0 or w == 0:
+                A[i][w] = 0
+            elif wt[i - 1] <= w:
+                # A[i - 1, x- wi] + vi, A[i-1, x]
+                A[i][w] = max(A[i - 1][w - wt[i - 1]] + val[i - 1], A[i - 1][w])
+            else:
+                A[i][w] = A[i - 1][w]
+    return A[n][W]
 
 # *************** Rod Cutting *************** #
 
 # *************** Change Making *************** #
 
+# *************** Activity Selection *************** #
+
 
 if __name__ == '__main__':
+    # Input values
+
+    # Bellman-Ford:
     example_graph = {
         's': {'t': 6, 'y': 7},
         't': {'x': 5, 'z': -4, 'y': 8},
@@ -89,8 +115,16 @@ if __name__ == '__main__':
         'z': {'x': 7, 's': 2},
         'x': {'t': -2}
     }
+    # Knapsack 0-1:
+    val = [3, 2, 4, 4]
+    wt = [4, 3, 2, 4]
+    W = 6
+    n = len(val)
+
     print("Bellman-Ford result: ", get_distances(example_graph, 's'))
     print("Fibonacci result: ", fibonacci_number(9))
     print("Unique binary search trees: ", num_trees(2))
     print("Minimum Steps Required to convert w1 to w2 : ", min_distance('carat', 'casis'))
-    print ("Longest Common Subsequence: ", lcs('bacad', 'accbadcb'))
+    print("Longest Common Subsequence: ", lcs('bacad', 'accbadcb'))
+    print("Sequence Analysis Result: ", sequence_alignment('AGCGCT', 'AGCCA'))
+    print("Knapsack 0-1 Optimal Solution: ", knapsack_01(W, wt, val, n))
