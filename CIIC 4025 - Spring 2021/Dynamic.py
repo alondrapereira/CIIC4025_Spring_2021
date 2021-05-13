@@ -18,6 +18,16 @@ def get_distances(graph, source_vertex):
 
 # *************** Fibonacci Number *************** #
 
+# Fibonacci Series using Dynamic Programming
+def fibonacci_number(n):
+    A = [0, 1]
+    for i in range(2, n + 1):
+        A.append(A[i - 1] + A[i - 2])
+    return A[n]
+
+
+
+
 # *************** Binary Search Tree *************** #
 
 # *************** Edit Distance *************** #
@@ -33,7 +43,6 @@ def get_distances(graph, source_vertex):
 # *************** Change Making *************** #
 
 
-
 if __name__ == '__main__':
     example_graph = {
         's': {'t': 6, 'y': 7},
@@ -42,4 +51,5 @@ if __name__ == '__main__':
         'z': {'x': 7, 's': 2},
         'x': {'t': -2}
     }
-    print(get_distances(example_graph, 's'))
+    # print(get_distances(example_graph, 's'))
+    print(fibonacci_number(9))
