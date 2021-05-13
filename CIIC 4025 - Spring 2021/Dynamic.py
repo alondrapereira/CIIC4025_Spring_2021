@@ -1,4 +1,5 @@
-# Bellman-Ford Algorithm
+# *************** Bellman-Ford Algorithm *************** #
+
 def get_distances(graph, source_vertex):
     distances = {}
     # First, define each vertex in the graph as an infinite number.
@@ -13,6 +14,24 @@ def get_distances(graph, source_vertex):
                 if distances[vertex] != float("inf") and distances[vertex] + weight < distances[edge]:
                     distances[edge] = distances[vertex] + weight
     return distances
+
+
+# *************** Fibonacci Number *************** #
+
+# *************** Binary Search Tree *************** #
+
+# *************** Edit Distance *************** #
+
+# *************** Longest Common Subsequence *************** #
+
+# *************** Sequence Analysis *************** #
+
+# *************** 0-1 Knapsack *************** #
+
+# *************** Rod Cutting *************** #
+
+# *************** Change Making *************** #
+
 
 
 if __name__ == '__main__':

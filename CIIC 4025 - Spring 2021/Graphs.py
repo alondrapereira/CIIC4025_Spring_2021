@@ -1,4 +1,13 @@
-# Connected components (DFS)
+# *************** BFS *************** #
+
+# ********* Shortest Path ********* #
+
+# ********* Connected components (undirected) ********* #
+
+
+# *************** DFS *************** #
+
+# ********* Connected components (directed) ********* #
 def numIslands(grid):
     if len(grid) == 0:
         return 0
@@ -22,6 +31,7 @@ def dfs(grid, i, j):
     dfs(grid, i, j - 1)
     return 1
 
+# ********* Topological sorting ********* #
 
 if __name__ == '__main__':
     grid = [
@@ -31,11 +41,9 @@ if __name__ == '__main__':
         ["0", "0", "0", "0", "0"]
     ]
     grid2 = [
-        ["1", "1","0","0","0"],
-        ["1","1","0","0","0"],
-        ["0","0","1","0","0"],
-        ["0","0","0","1","1"]
+        ["1", "1", "0", "0", "0"],
+        ["1", "1", "0", "0", "0"],
+        ["0", "0", "1", "0", "0"],
+        ["0", "0", "0", "1", "1"]
     ]
     print("The number of islands is:", numIslands(grid2))
-
-

@@ -1,7 +1,7 @@
 from collections import defaultdict
 import heapq
 
-# Prim's Algorithm
+# *************** Prim's Algorithm *************** #
 def create_spanning_tree(graph, vertex):
     mst = defaultdict(set)
     # Add given vertex to the visited_vertices
@@ -22,3 +22,18 @@ def create_spanning_tree(graph, vertex):
                 if next not in visited_vertices:
                     heapq.heappush(edges, (value, next_vertex, next)) # Add remaining vertices to edges
     return mst
+
+# *************** Dijkstra's Algorithm *************** #
+
+# *************** Activity Selection *************** #
+
+# *************** Fractional Knapsack *************** #
+
+# *************** Change Making *************** #
+
+# *************** Huffman Coding *************** #
+
+
+
+
+
