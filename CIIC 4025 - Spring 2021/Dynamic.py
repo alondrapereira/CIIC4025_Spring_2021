@@ -49,7 +49,28 @@ def min_distance(word1, word2):
                 d[i][j] = 1 + min(min(d[i - 1][j], d[i][j - 1]), d[i - 1][j - 1])
     return d[len(word1)][len(word2)]
 
+
 # *************** Longest Common Subsequence *************** #
+# Dynamic Programming implementation of LCS problem
+def lcs(s1, s2):
+    # find the length of the strings
+    m = len(s1)
+    n = len(s2)
+    # declaring the array for storing the dp values
+    L = [[None] * (n + 1) for i in range(m + 1)]
+    """Following steps build L[m + 1][n + 1] in bottom up fashion
+    Note: L[i][j] contains length of LCS of s1[0..i-1]
+    and s2[0..j-1]"""
+    for i in range(m + 1):
+        for j in range(n + 1):
+            if i == 0 or j == 0:
+                L[i][j] = 0
+            elif s1[i - 1] == s2[j - 1]:
+                L[i][j] = L[i - 1][j - 1] + 1
+            else:
+                L[i][j] = max(L[i - 1][j], L[i][j - 1])
+    # L[m][n] contains the length of LCS of s1[0..n-1] & s2[0..m-1]
+    return L[m][n]
 
 # *************** Sequence Analysis *************** #
 
@@ -72,4 +93,4 @@ if __name__ == '__main__':
     print("Fibonacci result: ", fibonacci_number(9))
     print("Unique binary search trees: ", num_trees(2))
     print("Minimum Steps Required to convert w1 to w2 : ", min_distance('carat', 'casis'))
-
+    print ("Longest Common Subsequence: ", lcs('bacad', 'accbadcb'))
