@@ -1,4 +1,8 @@
+import math
+
 # *************** Bellman-Ford Algorithm *************** #
+
+# *************** NORMAL *************** #
 def get_distances(graph, source_vertex):
     distances = {}
     # First, define each vertex in the graph as an infinite number.
@@ -13,6 +17,48 @@ def get_distances(graph, source_vertex):
                 if distances[vertex] != float("inf") and distances[vertex] + weight < distances[edge]:
                     distances[edge] = distances[vertex] + weight
     return distances
+
+# *************** WITH SOME RECURSION *************** #
+
+def get_distances(graph, startN):
+    nodes = list(graph.keys())
+    distances = {}
+    for k in nodes:
+        if k == startN:
+            distances[k] = 0
+        else:
+            distances[k] = math.inf
+
+    return get_distances_helper(graph, distances, 0, nodes, 0, 0)
+
+def get_distances_helper(graph, distances, weight, nodes, nodesIndex, iteration):
+    if(iteration == len(nodes)):
+        return distances
+    if(nodesIndex == len(nodes)):
+        return get_distances_helper(graph, distances, distances[nodes[0]], nodes, 0, iteration + 1)
+    
+    if(weight == math.inf):
+        if(nodesIndex + 1 == len(nodes)):
+            return get_distances_helper(graph, distances, distances[nodes[0]], nodes, 0, iteration + 1)
+        else:
+            return get_distances_helper(graph, distances, distances[nodes[nodesIndex + 1]], nodes, nodesIndex + 1, iteration)
+
+    for k, v in graph[nodes[nodesIndex]].items():
+        if(distances[k] > (v + weight)):
+            distances[k] = v + weight
+    if(nodesIndex + 1 == len(nodes)):
+            return get_distances_helper(graph, distances, distances[nodes[0]], nodes, 0, iteration + 1)
+    return get_distances_helper(graph, distances, distances[nodes[nodesIndex + 1]], nodes, nodesIndex + 1, iteration)
+        
+
+# graph = {
+#     's' : {'t':6, 'y':7},
+#     't' : {'x':5, 'z':-4, 'y':8 },
+#     'y' : {'z':9, 'x':-3},
+#     'z' : {'x':7, 's': 2},
+#     'x' : {'t':-2}
+# }
+# print(get_distances(graph,'s'))
 
 
 # *************** Fibonacci Number *************** #
