@@ -84,7 +84,8 @@ def sequence_alignment(s1, s2):
 # Program for 0-1 Knapsack problem
 # Returns the maximum value that can
 # be put in a knapsack of capacity W
-def knapsack_01(W, wt, val, n):
+def knapsack(val, wt, W):
+    n = len(val)
     A = [[0 for x in range(W + 1)] for x in range(n + 1)]
     for i in range(n + 1):
         for w in range(W + 1):
@@ -100,8 +101,6 @@ def knapsack_01(W, wt, val, n):
 
 # *************** Rod Cutting *************** #
 # A Dynamic Programming solution for Rod cutting problem
-
-
 # Returns the best obtainable price for a rod of length n and
 # price[] as prices of different pieces
 def cut_rode(price, n):
@@ -181,7 +180,6 @@ if __name__ == '__main__':
     knap_value = [3, 2, 4, 4]
     wt = [4, 3, 2, 4]
     W = 6
-    n = len(knap_value)
 
     # Rod Cutting
     # Driver program to test above functions
@@ -194,7 +192,7 @@ if __name__ == '__main__':
     print("Minimum Steps Required to convert w1 to w2 : ", min_distance('carat', 'casis'))
     print("Longest Common Subsequence: ", lcs('bacad', 'accbadcb'))
     print("Sequence Analysis Result: ", sequence_alignment('AGCGCT', 'AGCCA'))
-    print("Knapsack 0-1 Optimal Solution: ", knapsack_01(W, wt, knap_value, n))
+    print("Knapsack 0-1 Optimal Solution: ", knapsack(knap_value, wt, W))
     print("Rod Cutting Maximum Obtainable Value: ", str(cut_rode(arr, size)))
     print("Change Making: ", get_number_of_ways(12, [1, 5, 10]))
     print("Activity Selection: ", activity_selection([
