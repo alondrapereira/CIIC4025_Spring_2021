@@ -1,9 +1,9 @@
 # *************** BFS *************** #
 
 # ********* Shortest Path ********* #
-
+# TODO
 # ********* Connected components (undirected) ********* #
-
+# TODO
 
 # *************** DFS *************** #
 
@@ -32,6 +32,7 @@ def dfs(grid, i, j):
     return 1
 
 # ********* Topological sorting ********* #
+# TODO
 
 if __name__ == '__main__':
     grid = [
