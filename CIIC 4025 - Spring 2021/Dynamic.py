@@ -126,10 +126,10 @@ without integer overflow'''
 def get_number_of_ways(n, Coins):
     # Create the ways array to 1 plus the amount
     # to stop overflow
-    ways = [0] * (n + 1);
+    ways = [0] * (n + 1)
     # Set the first way to 1 because its 0 and
     # there is 1 way to make 0 with 0 coins
-    ways[0] = 1;
+    ways[0] = 1
     # Go through all of the coins
     for i in range(len(Coins)):
         # Make a comparison to each index value
@@ -137,10 +137,10 @@ def get_number_of_ways(n, Coins):
         for j in range(len(ways)):
             if (Coins[i] <= j):
                 # Update the ways array
-                ways[j] += ways[(int)(j - Coins[i])];
+                ways[j] += ways[(int)(j - Coins[i])]
     # return the value at the Nth position
     # of the ways array.
-    return ways[n];
+    return ways[n]
 
 # *************** Activity Selection *************** #
 # Returns the maximum count of non-conflicting jobs that can be performed
